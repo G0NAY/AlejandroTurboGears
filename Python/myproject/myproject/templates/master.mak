@@ -72,6 +72,7 @@
         <li class="${('', 'active')[page=='testbasededatos']}"><a href="${tg.url('/libreria/tablaBase2')}">Tabla de prestamos</a></li>
         <li class="${('', 'active')[page=='weather']}"><a href="${tg.url('/weather')}">Clima</a></li>
         <li class="${('', 'active')[page=='reload']}"><a href="${tg.url('/reload/JsonReload')}">Recarga</a></li>
+        <li class="${('', 'active')[page=='courses']}"><a href="${tg.url('/courses/CoursesLoad')}">Cursos</a></li>
         <li class="${('', 'active')[page=='datosweather']}"><a href="${tg.url('/datosweather')}">Datos Json</a></li>
         <li class="${('', 'active')[page=='connection']}"><a href="${tg.url('/connection')}">Base Datos</a></li>
         <li class="${('', 'active')[page=='telefonica']}"><a href="${tg.url('/telefonica')}">Telefonica</a></li>

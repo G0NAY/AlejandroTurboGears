@@ -8,7 +8,7 @@ engine = create_engine(config['sqlalchemy.url'])
 from myproject.model import DBSession
 import json
 import regex
-from myproject.model.tableslibreria import Usuario, Author, Book, prestamo_books_table
+
 class URLunicode():
     def __init___(self):
         pass
@@ -176,7 +176,7 @@ class jqgridDataGrabber(object):
             pointer=0
             for item in fields:
                 if item==self.indexkey:
-                   ndx=pointer
+                    ndx=pointer
                 pointer=pointer+1
                 myfields=myfields+item.name+","
             myfields=myfields[:-1]
@@ -302,143 +302,7 @@ class jqgridDataGrabber(object):
             pointer=0
             for item in fields:
                 if item==self.indexkey:
-                   ndx=pointer
-                pointer=pointer+1
-                myfields=myfields+item.name+","
-            myfields=myfields[:-1]
-            sql = "SELECT "+myfields+ " FROM "+self.model.__tablename__+" "+ where +" ORDER BY " + sidx + " "+ sord
-            #print(sql)
-            #print(ndx)
-            query = text(sql)
-            result = engine.execute(query)
-            data = result.fetchall()
-            if limit<0:
-                limit=0
-            start=(limit*selectedpage)-limit
-            if start < 0:
-                start=0
-            totalRecords=0
-            records = []
-            pos=0
-            for row in data:
-                fields=[]
-                for item in row:
-                    #############print()
-                    #print("loading: {} to {} type:{}".format(str(item), type(type(item))))
-                    fields.append(item)
-                key=str(fields[ndx])
-                if pos>=start and pos<=start+limit-1:
-                    records.append({self.indexkey: key, 'cell': fields})
-                totalRecords=totalRecords+1
-                pos=pos+1
-
-            if totalRecords>0:
-                totalPages=int(math.ceil(totalRecords / float(limit)))
-            else:
-                totalPages=0
-
-            if selectedpage>totalPages:
-                selectedpage=totalPages
-            #print("len records{}".format(len(records)))
-            #print("Total pages:{} Start:{} Records:{}".format(totalPages,start,totalRecords))
-            #print(records)
-        return dict(total=totalPages, page=selectedpage, records=totalRecords, rows=records)
-
-    def loadGridIds(self):
-        # for k,v in self.kw.items():
-        #     print("{} : {} ".format(k,v))
-        if self.kw['_search']=='false':
-            selectedpage = int(self.kw['page'])
-            dynamic_filtered_query_class = DynamicFilter(self.kw['sord'],self.kw['sidx'],query=None, model_class=self.model,filter_condition=self.filter)
-            themodel = dynamic_filtered_query_class.return_query()
-            pageIndex = int(self.kw['page']) - 1
-            pageSize = int(self.kw['rows'])
-            totalRecords = themodel.count()
-            #print("Total Records:{}".format(totalRecords))
-            totalPages = int(math.ceil(totalRecords / float(pageSize)))
-            offset = (pageIndex) * pageSize
-            window = themodel.offset(offset).limit(pageSize)
-            records=[]
-            fields=[]
-            for rw in window:
-                for columnlist in rw.__table__.columns:
-                    column = getattr(rw, columnlist.name)
-                    toc = str(type(column))
-                    #print("Column name={} toc={}".format(column,toc))
-                    if column is not None:
-                        value=column
-                        if toc == "<class 'bool'>":
-                            if column is False:
-                                value="0"
-                            else:
-                                value="1"
-                        if toc == "<class 'datetime.datetime'>":
-                            #print("DATE TIME!!")
-                            value = column.strftime("%Y-%m-%d %H:%M:%S")
-                            #print(value)
-                        if toc == "<type 'str'>" or toc=="<class 'str'>":
-                            utf8 = URLunicode()
-                            value = utf8.decode(value)
-                            value = value.replace('\r\n',' ')
-                            value = value.replace('\n',' ')
-                        if columnlist.name == 'user_id':
-                            handler = DBSession.query(Usuario).filer_by(usuario_id=value).first()
-                            if handler!= None:
-                                value = handler.name
-                        if columnlist.name == 'user_id':
-                            handler = DBSession.query(Book).filer_by(book_id=value).first()
-                            if handler!= None:
-                                value = handler.book_name
-                    else:
-                        if toc == "<type 'str'>" or toc=="<class 'str'>":
-                            value = u""
-                        if toc == "<type 'unicode'>" or  toc == "<class 'unicode'>":
-                            value=u""
-                        if toc == "<type 'datetime.datetime'>" or toc == "<class 'datetime.datetime'>":
-                            value=""
-                        else:
-                            value="0"
-                            #print("loading: {} to {} type:{}".format(str(column), value, str(type(column))))
-                    fields.append(value)
-                records.append({self.indexkey:  str(getattr(rw, self.indexkey)), 'cell': fields})
-                fields=[]
-            #print(records)
-        else:
-            selectedpage = int(self.kw['page']) # 0; # get the requested page
-            limit =  int(self.kw['rows']) # 50; #get how many rows we want to have into the grid
-            sidx = self.kw['sidx'] #1; #get index row - i.e. user click to sort
-            sord = self.kw['sord'] #"asc"; #// get the direction
-            #print ("page:{} limit:{} sidx:{} sord:{}".format(selectedpage,limit,sidx,sord))
-            operations={}
-            operations['eq']="= '{}'"  # Equal
-            operations['ne'] = "<> '{}'"  # Not Equal
-            operations['lt'] = "< '{}'"  # Less Than
-            operations['le'] = "<= '{}'"  # Less than or equal
-            operations['gt'] = "> '{}'"  # Greater than
-            operations['ge'] = ">= '{}'"  # Greater or equal
-            operations['bw'] = "like '{}%'"  # Begins With
-            operations['bn'] = "not like '{}%'"  # Does not begin with
-            operations['in'] = "in ('{}')" # In
-            operations['ni'] = "not in ('{}')"  # Not in
-            operations['ew'] = "like '%{}'"  # Ends with
-            operations['en'] = "not like '%{}'"  # Does not end with
-            operations['cn'] = "like '%{}%'"  # Contains
-            operations['nc'] = "not like '%{}%'"  # Does not contain
-            operations['nu'] = "is null"  # is Null
-            operations['nn'] = "is not null" # is not Null
-            value=self.kw['searchString']
-            where="WHERE {} {}".format(self.kw['searchField'],operations[self.kw['searchOper']].format(value))
-            if len(self.filter)>0:
-                where = where + " and " + self.filter[0][0] + operations[self.filter[0][1]].format(self.filter[0][2])
-                #print("WHERE: {}".format(where))
-
-            fields=self.model.__table__.columns
-            myfields=""
-            ndx=0
-            pointer=0
-            for item in fields:
-                if item==self.indexkey:
-                   ndx=pointer
+                    ndx=pointer
                 pointer=pointer+1
                 myfields=myfields+item.name+","
             myfields=myfields[:-1]
@@ -624,8 +488,8 @@ class jqgridDataGrabber(object):
             totalRecords = themodel.count()
             #print("Total Records:{}".format(totalRecords))
             totalPages = int(math.ceil(totalRecords / float(pageSize)))
-            offset = (pageIndex)* pageSize
+            offset = (pageIndex) * pageSize
             window = themodel.offset(offset).limit(pageSize)
             records=[]
             fields=[]
-            return dict(total=totalPages, page=selectedpage, records=totalRecords, rows=records)
+        return dict(total=totalPages, page=selectedpage, records=totalRecords, rows=records)

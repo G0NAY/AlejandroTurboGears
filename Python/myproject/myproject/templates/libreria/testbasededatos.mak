@@ -29,7 +29,7 @@
 	<button onclick="gridReload()" id="submitButton" style="margin-left:30px;">Search</button>
 </div>
 
-<br />
+<br/>
 
 
     <table style="width:100%;overflow:auto;">

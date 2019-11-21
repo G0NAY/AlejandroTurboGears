@@ -61,5 +61,6 @@ def init_model(engine):
 from myproject.model.auth import User, Group, Permission
 from myproject.model.tables import Tracker, Distribuciones
 from myproject.model.tableslibreria import Usuario, Author, Book, prestamo_books_table
+from myproject.model.tablescourses import Student, Course, Professor, student_course_table
 
 __all__ = ('User', 'Group', 'Permission')

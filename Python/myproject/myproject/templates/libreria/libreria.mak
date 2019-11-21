@@ -247,12 +247,15 @@ function  displayPrestamo() {
         });
         $.extend($.jgrid.nav,{alerttop:1});
     </script>
-    <br>
+
+<br>
+
 <table style="width:100%;overflow:auto;">
     <table id="jqGridTableAuthor" class="scroll" cellpadding="0" cellspacing="0"></table>
     <div id="listPagerTablesAuthor" class="scroll" style="text-align:center;"></div>
     <div id="listPsetcols" class="scroll" style="text-align:center;"></div>
-    </table>
+</table>
+
 <script type="text/javascript">
         $(document).ready(
         function () {
@@ -301,12 +304,12 @@ function  displayPrestamo() {
                             deleteParams,
                             searchParams,
                             viewParams);
-
-
         });
         $.extend($.jgrid.nav,{alerttop:1});
     </script>
+
     <br>
+
 <table style="width:100%;overflow:auto;">
     <table id="jqGridTableBook" class="scroll" cellpadding="0" cellspacing="0"></table>
     <div id="listPagerTablesBook" class="scroll" style="text-align:center;"></div>

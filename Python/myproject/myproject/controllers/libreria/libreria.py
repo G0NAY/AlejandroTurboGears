@@ -36,14 +36,12 @@ class LibreriaController(BaseController):
 
     @expose('json')
     def displayUsuarios(self, **kw):
-        displayusuarios = render_template({"list": list}, "mako",
-                                          'myproject.templates.libreria.displayusuarios')
+        displayusuarios = render_template({"list": list}, "mako",'myproject.templates.libreria.displayusuarios')
         return dict(displayusuarios=displayusuarios)
 
     @expose('json')
     def displayBooks(self, **kw):
-        displaybooks = render_template({"list": list}, "mako",
-                                          'myproject.templates.libreria.displaybooks')
+        displaybooks = render_template({"list": list}, "mako",'myproject.templates.libreria.displaybooks')
         return dict(displaybooks=displaybooks)
 
     @expose('json')
@@ -97,19 +95,14 @@ class LibreriaController(BaseController):
         return dict()
 
     @expose('json')
-    @require(predicates.not_anonymous())
     def tablaBaseConec(self, **kw):
         prestamos = DBSession.query(prestamo_books_table).all()  # prestamos recibe todos los elementos de la tabla prestamos
         relacion = []  # Se crea una nueva lista donde almacenaremos datos
         for prestamo in prestamos:  # Recorremos los elementos de prestamos
-            usuario = DBSession.query(Usuario).filter_by(
-                usuario_id=prestamo.usuario_id).first()  # la variable usuario recibe elementos de la tabla Usuario donde usuario_id es igual a la misma posicion en prestamos
-            libro = DBSession.query(Book).filter_by(
-                book_id=prestamo.book_id).first()  # la variable libro recibe elementos de la tabla Book donde book_id es igual a la misma posicion en prestamos
-            relacion.append({'usuario_id': usuario.name,
-                             'book_id': libro.book_name})  # Se regresa a relacion cada posicion recorrida en prestamos y se envia el nombre de las tablas Book y Usuario
-        return dict(total=200, page=1, records=500,
-                    rows=relacion)  # Regresamos un Json con formato total, page, records, rows que es como lo requiere nuestro jqgrid
+            usuario = DBSession.query(Usuario).filter_by(usuario_id=prestamo.usuario_id).first()  # la variable usuario recibe elementos de la tabla Usuario donde usuario_id es igual a la misma posicion en prestamos
+            libro = DBSession.query(Book).filter_by(book_id=prestamo.book_id).first()  # la variable libro recibe elementos de la tabla Book donde book_id es igual a la misma posicion en prestamos
+            relacion.append({'usuario_id': usuario.name, 'book_id': libro.book_name})  # Se regresa a relacion cada posicion recorrida en prestamos y se envia el nombre de las tablas Book y Usuario
+        return dict(total=200, page=1, records=500, rows=relacion)  # Regresamos un Json con formato total, page, records, rows que es como lo requiere nuestro jqgrid
 
     @expose('json')
     def prestamosTemplate(self, **kw):
@@ -141,7 +134,3 @@ class LibreriaController(BaseController):
         else:
             error = "Ya tiene 3 libros asignados. No puede sacar más libros"
         return dict(book=book)
-
-'''
-
-'''

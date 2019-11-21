@@ -24,6 +24,7 @@ from myproject.controllers.error import ErrorController
 import requests
 from myproject.controllers.libreria.libreria import LibreriaController
 from myproject.controllers.reload.reload import ReloadController
+from myproject.controllers.courses.courses import CoursesController
 
 __all__ = ['RootController']
 
@@ -49,6 +50,7 @@ class RootController(BaseController):
 
     libreria = LibreriaController()
     reload = ReloadController()
+    courses = CoursesController()
 
     def _before(self, *args, **kw):
         tmpl_context.project_name = "myproject"
