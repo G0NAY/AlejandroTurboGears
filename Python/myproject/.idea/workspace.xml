@@ -1,33 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3ab7d527-4f0b-4a56-9db8-1c24efc0d03c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/about.mak.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/data.mak.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/datosweather.mak.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/environ.mak.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/jqgrid.mak.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/makoconnection/test.mak.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/makoconnection/vistasj2.mak.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/reload/reload.mak.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myproject/controllers/courses/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myproject/controllers/courses/courses.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myproject/model/tablescourses.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myproject/templates/Ejemplo.mak" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myproject/templates/courses/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myproject/templates/courses/courses.mak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/myproject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/myproject.iml" afterDir="false" />
+    <list default="true" id="3ab7d527-4f0b-4a56-9db8-1c24efc0d03c" name="Default Changelist" comment="linea &lt;br&gt; agrgada">
+      <change afterPath="$PROJECT_DIR$/myproject/templates/courses/student_course.mak" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myproject/templates/courses/students.mak" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject.egg-info/SOURCES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/myproject.egg-info/SOURCES.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/controllers/jqgrid.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/controllers/jqgrid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/controllers/libreria/libreria.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/controllers/libreria/libreria.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/controllers/root.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/controllers/root.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/courses/courses.mak.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/courses/courses.mak.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/libreria/libreria.mak.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/libreria/libreria.mak.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/controllers/courses/courses.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/controllers/courses/courses.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/templates/courses/courses.mak" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/templates/courses/courses.mak" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/templates/libreria/libreria.mak" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/templates/libreria/libreria.mak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/templates/libreria/testbasededatos.mak" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/templates/libreria/testbasededatos.mak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/templates/master.mak" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/templates/master.mak" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +120,8 @@
       <workItem from="1574177148468" duration="7232000" />
       <workItem from="1574276177209" duration="4193000" />
       <workItem from="1574285274602" duration="7223000" />
-      <workItem from="1574350868948" duration="6801000" />
+      <workItem from="1574350868948" duration="15644000" />
+      <workItem from="1574436722615" duration="13576000" />
     </task>
     <servers />
   </component>
