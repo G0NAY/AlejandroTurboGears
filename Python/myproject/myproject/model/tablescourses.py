@@ -1,4 +1,4 @@
-from sqlalchemy import Table, ForeignKey, Column, Integer, Unicode, DateTime, Numeric
+from sqlalchemy import Table, ForeignKey, Column, Integer, Unicode, DateTime, Numeric, LargeBinary
 from myproject.model import DeclarativeBase, metadata
 from sqlalchemy.orm import relation, backref, relationship
 
@@ -21,6 +21,7 @@ class Student(DeclarativeBase):
     student_id = Column(Integer, autoincrement=True, primary_key=True)
     name = Column(Unicode(30))
     lastname = Column(Unicode(30))
+    image = Column(LargeBinary(length=(2 ** 32) - 1))
 
 class Course(DeclarativeBase):
     __tablename__ = 'course'
