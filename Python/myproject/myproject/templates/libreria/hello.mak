@@ -4,6 +4,9 @@
     </HEAD>
     <BODY BGCOLOR="FFFFFF">
         <CENTER>
+            <form>
+
+
         <table>
 		<caption>Datos de usuario</caption>
 		<tr>
@@ -21,6 +24,7 @@
                     %endfor
         </tr>
 		</table>
+            </form>
 
         </CENTER>
         <HR>

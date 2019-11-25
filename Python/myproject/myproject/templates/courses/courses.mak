@@ -109,7 +109,7 @@
                 mtype: 'GET',
                 colNames: ['ID de Estudiante', 'Nombre','Apellido'],
                 colModel: [
-                    {name: 'student_id',index: 'student_id', width: 5,align: 'left',key:true,hidden: true, editable: true,edittype: 'text',editrules: {required: false}},
+                    {name: 'student_id',index: 'student_id', width: 5,align: 'left',key:true,hidden: false, editable: true,edittype: 'text',editrules: {required: false}},
                     {name: 'name',index: 'name', width: 30, align: 'right',hidden: false,editable: true, edittype: 'text',editrules: {required: false}},
                     {name: 'lastname',index: 'code', width: 30, align: 'right',hidden: false,editable: true, edittype: 'text',editrules: {required: false}},
 
@@ -124,6 +124,7 @@
                 viewrecords: true,
                 height: 150,
                 subGrid:true,
+                subGridRowExpanded: showChildGridRegistro,
                 caption: header_container_student,
                 ondblClickRow: function(rowId) {
                     closeVenusActivity(rowId);
@@ -146,6 +147,7 @@
 <table id="jqGridTableRegistered" class="scroll" cellpadding="0" cellspacing="0"></table>
     <div id="listPagerTablesRegistered" class="scroll" style="text-align:center;"></div>
     <div id="listPsetcolsRegistered" class="scroll" style="text-align:center;"></div>
+    <div id="dialogForm01"  title="Elimina Registros"></div>
 </table>
 <script type="text/javascript">
         $(document).ready(
@@ -170,10 +172,10 @@
                 url: load_url_registered,
                 datatype: 'json',
                 mtype: 'GET',
-                colNames: ['student_id','courses_id' ,'Nombre de estudiante', 'Curso'],
+                colNames: ['ClaveEstudiante','courses_id' ,'Nombre de estudiante', 'Curso'],
                 colModel: [
-                    {name: 'student_id',index: 'student_id', width: 30, align: 'right',hidden: true,editable: true, edittype: 'text',editrules: {required: false}},
-                    {name: 'course_id',index: 'course_id', width: 30, align: 'right',hidden: true,editable: true, edittype: 'text',editrules: {required: false}},
+                    {name: 'student_id',index: 'student_id', width: 5, align: 'right',hidden: false,editable: true, edittype: 'text',editrules: {required: false}},
+                    {name: 'course_id',index: 'course_id', width: 5, align: 'right',hidden: true,editable: true, edittype: 'text',editrules: {required: false}},
                     {name: 'student_name',index: 'name', width: 30, align: 'right',hidden: false,editable: true, edittype: 'text',editrules: {required: false}},
                     {name: 'course_name',index: 'name', width: 30, align: 'right',hidden: false,editable: true, edittype: 'text',editrules: {required: false}},
 
@@ -189,10 +191,10 @@
                 height: 150,
                 caption: header_container_registered,
                 ondblClickRow: function(rowId) {
-                    closeVenusActivity(rowId);
+
                 }
             });
-            grid_registered.jqGrid('navGrid',grid_pager_registered,{edit:true,add:true,del:false, search:true},
+            grid_registered.jqGrid('navGrid',grid_pager_registered,{edit:false,add:true,del:false, search:false},
                             editParams_registered,
                             addParams_registered,
                             deleteParams_registered,
@@ -201,38 +203,106 @@
             grid_registered.navButtonAdd(grid_pager_registered,
                 {
                     buttonicon: " ui-icon-trash",
-                    title: "${_('trash')}",
-                    caption: "${_(' ')}",
+                    title: "Eliminar",
+                    caption: " ",
                     position: "last",
                     onClickButton: function(rowId){
                         EliminaFila(rowId);
                     }
+                })
+            .navButtonAdd(grid_pager_registered,{
+                    caption:"",
+                    buttonicon:"ui-icon-del",
+                    onClickButton: function(){
+                    alert("Surprise!!!");
+                    },
+                    position:"last"
                 });
         });
 
         $.extend($.jgrid.nav,{alerttop:1});
 
         function EliminaFila(rowId){
-    var selRowId = jQuery('#jqGridTableRegistered').jqGrid ('getGridParam', 'selrow');
-    var rowData = jQuery("#jqGridTableRegistered").getRowData(selRowId);
-    var student_id = rowData['student_id'];
-    var course_id = rowData['course_id'];
+            var selRowId = jQuery('#jqGridTableRegistered').jqGrid ('getGridParam', 'selrow');
+            var rowData = jQuery("#jqGridTableRegistered").getRowData(selRowId);
+            var student_id = rowData['student_id'];
+            var course_id = rowData['course_id'];
 
-           if (!selRowId){
-                      alert("Seleccione una fila")
-                    }
-                else {
-                    <!--alert(usuario+usuario_id+'\n'+libro + libro_id)-->
 
-                    var formData = new FormData();
-                    formData.append("student_id", student_id);
-                    formData.append("course_id", course_id);
+                if (!selRowId){
+                 alert("Seleccione una fila")
+               }
+           else {
+                    $('#dialogForm01').html("¿Deseas eliminar este registro?");
+                    var winHeight = Math.round(window.innerHeight * .345)
+                    var winWidth = Math.round(window.innerWidth * .445)
+                    var ContDialog = $("#dialogForm01").dialog({
+                        autoOpen: false,
+                        height: winHeight - 100,
+                        width: winWidth - 300,
+                        modal: true,
+                        title: "${_('Eliminar')}",
+                        dialogClass: "noclose",
+                        closeOnEscape: false,
+                        buttons: {
+                            "${_('Si')}": function () {
+                                $('#dialogForm01').html("");
 
-                    var request = new XMLHttpRequest();
-                    request.open("POST", '${h.url()}/courses/DeleteRegistered');
-                    request.send(formData);
+                                    var formData = new FormData();
+                                    formData.append("student_id", student_id);
+                                    formData.append("course_id", course_id);
+                                    var request = new XMLHttpRequest();
+                                    request.open("POST", '${h.url()}/courses/DeleteRegistered');
+                                    request.send(formData);
+                                    $('#jqGridTableRegistered').trigger( 'reloadGrid' );
+
+                                ContDialog.dialog("close");
+                            },
+                            "${_('No')}": function () {
+                                $('#dialogForm01').html("");
+                                ContDialog.dialog("close");
+                            }
+                        },
+                        close: function () {
+                        }
+                    });
+                    ContDialog.dialog("open");
                 }
-                $('#jqGridTableRegistered').trigger( 'reloadGrid' );
+
+}
+
+function showChildGridRegistro(parentRowID, parentRowKey) {
+     var childGridID = parentRowID + "_table";
+     var childGridPagerID = parentRowID + "_pager";
+
+     // send the parent row primary key to the server so that we know which grid to show
+     var childGridURL = "${h.url()}/courses/loadSubGridCursos";
+     childGridURL = childGridURL + "?student_id=" + encodeURIComponent(parentRowKey);
+
+     // add a table and pager HTML elements to the parent grid row - we will render the child grid here
+     $('#' + parentRowID).append('<table id='+childGridID+'><div id='+childGridPagerID+'class=scroll></div>');
+
+     $("#" + childGridID).jqGrid({
+          url: childGridURL,
+          mtype: "GET",
+          datatype: "json",
+          page: 1,
+          sortname: 'course_id',
+          sortorder: "desc",
+          colModel: [
+                 {name: 'course_id',index: 'course_id', align: 'center',key:true,hidden: false, editable: false,edittype: 'text',editrules: {required: true},search:false},
+                 {name: 'code', index: 'code',align: 'left',hidden: false, editable: true, edittype: 'text', editrules: {required: false}},
+                 {name: 'name', index: 'name',align: 'left',hidden: false, width:90,editable: true, edittype: 'text', editrules: {required: false}},
+                ],
+          loadonce: true,
+          scroll:true,
+          width: 500,
+          height: 75,
+          rowNum: 5,
+          rowList: [5,10],
+          pager: "#" + childGridPagerID,
+          autowidth: true,
+          });
 }
 
 

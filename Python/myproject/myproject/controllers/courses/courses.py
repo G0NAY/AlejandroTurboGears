@@ -65,7 +65,7 @@ class CoursesController(BaseController):
     @expose('json')
     def updateRegistered(self, **kw):
         print(kw)
-        current_student = DBSession.query(Student).filter_by(name=kw["student_name"]).first()
+        current_student = DBSession.query(Student).filter_by(student_id=kw["student_id"]).first()
         current_course = DBSession.query(Course).filter_by(code=kw["course_name"]).first()
         current_student.courses.append(current_course)
         DBSession.flush()
@@ -84,13 +84,14 @@ class CoursesController(BaseController):
         DBSession.flush()
         return dict()
 
-'''  if "oper" in self.kw:
-            if self.kw['oper'] == "del":
-                my_filters = {self.indexkey: self.kw['id']}
-                query = DBSession.query(self.model)
-                for attr, value in my_filters.items():
-                    query = query.filter(getattr(self.model, attr) == value)
-                item = query.first()
-                if item is not None:
-                    DBSession.delete(item)
-                    DBSession.flush()'''
+    @expose('json')
+    def loadSubGridCursos(self, **kw):
+        relacion = []
+        print(kw)
+        current_student = DBSession.query(Student).filter_by(student_id=kw["student_id"]).first()#
+        for item in current_student.courses:
+            print(item.course_id)
+            relacion.append({'course_id': item.course_id, 'code': item.code, 'name': item.name })
+        print(relacion)
+        return dict(total=200, page=1, records=500, rows=relacion)
+

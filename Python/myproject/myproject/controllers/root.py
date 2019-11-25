@@ -153,7 +153,6 @@ class RootController(BaseController):
         return dict(json=json)
 
     @expose('myproject.templates.makoconnection.connection')
-    @require(predicates.not_anonymous())
     def connection(self, **kw):
         tracker = DBSession.query(Tracker).all() #tracker recibe todos los elementos de la base de datos
         kw['tracker'] = [] #Declaramos una nueva lista dentro del diccionario kw que tiene por llave 'tracker'

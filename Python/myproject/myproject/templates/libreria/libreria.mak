@@ -249,9 +249,6 @@ function  displayPrestamo() {
     </script>
 
 <br>
-<br>
-
-</br>
 <table style="width:100%;overflow:auto;">
     <table id="jqGridTableAuthor" class="scroll" cellpadding="0" cellspacing="0"></table>
     <div id="listPagerTablesAuthor" class="scroll" style="text-align:center;"></div>

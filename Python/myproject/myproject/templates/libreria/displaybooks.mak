@@ -1,5 +1,5 @@
 <html lang="en">
-<head>
+<head></head>
 <body>
     <table style="width:100%;overflow:auto;">
     <table id="jqGridTableBooks" class="scroll" cellpadding="0" cellspacing="0"></table>

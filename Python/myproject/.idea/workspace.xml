@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ab7d527-4f0b-4a56-9db8-1c24efc0d03c" name="Default Changelist" comment="linea &lt;br&gt; agrgada">
-      <change afterPath="$PROJECT_DIR$/myproject/templates/courses/student_course.mak" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myproject/templates/courses/students.mak" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/courses/courses.mak.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/courses/courses.mak.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/libreria/libreria.mak.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/libreria/libreria.mak.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/controllers/courses/courses.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/controllers/courses/courses.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/controllers/root.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/controllers/root.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/templates/courses/courses.mak" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/templates/courses/courses.mak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/templates/libreria/displaybooks.mak" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/templates/libreria/displaybooks.mak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/templates/libreria/hello.mak" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/templates/libreria/hello.mak" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/templates/libreria/libreria.mak" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/templates/libreria/libreria.mak" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -121,7 +122,8 @@
       <workItem from="1574276177209" duration="4193000" />
       <workItem from="1574285274602" duration="7223000" />
       <workItem from="1574350868948" duration="15644000" />
-      <workItem from="1574436722615" duration="13576000" />
+      <workItem from="1574436722615" duration="14302000" />
+      <workItem from="1574694663823" duration="15212000" />
     </task>
     <servers />
   </component>
