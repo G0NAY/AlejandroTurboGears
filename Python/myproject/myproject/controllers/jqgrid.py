@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """Controllers for the python.mercury application."""
+from base64 import b64encode, b64decode
 from tg.configuration import config
 from sqlalchemy import asc, desc, text
 import math
@@ -239,6 +240,10 @@ class jqgridDataGrabber(object):
                     #print("Column name={} toc={}".format(column,toc))
                     if column is not None:
                         value=column
+                        if toc == "<class 'bytes'>":
+                            encoded_string = str(b64encode(column), 'utf-8')
+                            value = encoded_string
+                            fields.append(value)
                         if toc == "<class 'bool'>":
                             if column is False:
                                 value="0"

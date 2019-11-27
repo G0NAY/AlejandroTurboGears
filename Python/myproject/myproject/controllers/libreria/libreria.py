@@ -17,6 +17,7 @@ from myproject.model.tableslibreria import Usuario, Author, Book, prestamo_books
 from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
 from tgext.admin.controller import AdminController
 from myproject.controllers.jqgrid import jqgridDataGrabber
+import base64
 
 from myproject.lib.base import BaseController
 from myproject.controllers.error import ErrorController
@@ -60,6 +61,60 @@ class LibreriaController(BaseController):
         return jqgridDataGrabber(Author, 'author_id', filter, kw).loadGrid()
 
     @expose('json')
+    def addUsuario(self, **kw):
+
+        print(kw)
+
+        if kw["usuario_id"] == 0:
+            kw['handler'] = Usuario()
+        else:
+            kw['handler'] = DBSession.query(Usuario).filter_by(usuario_id=kw['usuario_id']).first()
+        dialogagrega = render_template({"list": list}, "mako", 'myproject.templates.libreria.agregausuario')
+        print(dialogagrega)
+        return dict(dialogagrega=dialogagrega)
+
+    @expose('json')
+    def saveFile(self, **kw):
+        print(kw)
+        name=kw["name"]
+        age = kw["age"]
+        phone = kw["phone"]
+        email_address = kw["email_address"]
+
+        if kw["image"] == "undefined":
+            return dict(error="Archivo obligatorio")
+        if name == "" or age == "" or phone == "" or email_address == "":
+            return dict(error="Campos obligatorios")
+
+        image = kw["image"]
+        if image.file:
+            fileName = image.filename
+            if fileName.find(".png") > 0 or fileName.find(".jpeg") > 0 or fileName.find(".jpg") > 0 or fileName.find(
+                    ".doc") > 0 or fileName.find(".PDF") > 0 or fileName.find(".pdf") > 0:
+                ftyoe = ""
+                if fileName.find(".png") > 0 or fileName.find(".jpeg") > 0 or fileName.find(".jpg") > 0:
+                    ftyoe = "image"
+                if fileName.find(".doc") > 0:
+                    ftyoe = "doc"
+                if fileName.find(".pdf") > 0:
+                    ftyoe = "pdf"
+                if fileName.find(".PDF") > 0:
+                    ftyoe = "pdf"
+
+                newUser = Usuario()
+                newUser.name = name
+                newUser.age = age
+                newUser.phone = phone
+                newUser.email_address = email_address
+                newUser.image = image.file.read()
+
+                DBSession.add(newUser)
+                DBSession.flush()
+            else:
+                return dict(error="Archivo obligatorio de tipo PNG, JPEG, DOC, PDF")
+        return dict(error="ok")
+
+    @expose('json')
     def updateAuthor(self, **kw):
         filter = []
         return jqgridDataGrabber(Author, 'author_id', filter, kw).updateGrid()
@@ -79,10 +134,16 @@ class LibreriaController(BaseController):
         handler_user = DBSession.query(prestamo_books_table).filter_by(usuario_id=kw['id']).all()
         kw['usuario'] = DBSession.query(Usuario).filter_by(usuario_id=kw['id']).first()
         kw['book'] = []
+        kw['image'] = ""
+
         for item in handler_user:
             handler_book = DBSession.query(Book).filter_by(book_id=item.book_id).first()
             if handler_book != None:
                 kw['book'].append({'book_name': handler_book.book_name})
+        if kw['usuario'].image != None:
+            kw['image'] = base64.b64encode(kw['usuario'].image)
+            kw['image'] = str(kw['image']).replace("b'", "")
+            kw['image'] = str(kw['image']).replace("'", "")
         dialogtemplate = render_template(kw, "mako", 'myproject.templates.libreria.hello')
         return dict(dialogtemplate=dialogtemplate)
 

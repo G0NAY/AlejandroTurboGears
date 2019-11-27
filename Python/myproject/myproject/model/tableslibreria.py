@@ -1,4 +1,4 @@
-from sqlalchemy import Table, ForeignKey, Column, Integer, Unicode, DateTime, Numeric
+from sqlalchemy import Table, ForeignKey, Column, Integer, Unicode, DateTime, Numeric, LargeBinary
 from myproject.model import DeclarativeBase, metadata
 from sqlalchemy.orm import relation,backref,relationship
 from sqlalchemy import ForeignKey
@@ -25,6 +25,7 @@ class Usuario(DeclarativeBase):
    phone = Column(Unicode(20))
    email_address = Column(Unicode(255), unique=True, nullable=False)
    created = Column(DateTime, default=datetime.now)
+   image = Column(LargeBinary(length=(2 ** 32) - 1))
    book = relation('Book', secondary=prestamo_books_table, backref='usuarios')
 
    def __unicode__(self):

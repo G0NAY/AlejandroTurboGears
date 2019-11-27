@@ -9,6 +9,7 @@
      <script src="http://code.jquery.com/jquery.js"></script>
   <script src="${tg.url('/javascript/bootstrap.min.js')}"></script>
     ${self.head_content()}
+
 </head>
 <body class="${self.body_class()}">
     ${self.main_menu()}

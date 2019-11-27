@@ -9,6 +9,12 @@
 
         <table>
 		<caption>Datos de usuario</caption>
+
+        <tr>
+            <td colspan="2">
+                <img src="data:image/png;base64,${image}" width="150" height="100" />
+            </td>
+        </tr>
 		<tr>
 			<td>Id de Usuario:</td>
 			<td>${usuario.usuario_id}</td>

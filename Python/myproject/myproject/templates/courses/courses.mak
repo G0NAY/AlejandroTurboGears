@@ -248,6 +248,7 @@
                             "${_('Si')}": function () {
                                 $('#dialogForm01').html("");
 
+                                    <!-- Aquí inicia la funcion para enviar los datos del row al EndPoint-->
                                     var formData = new FormData();
                                     formData.append("student_id", student_id);
                                     formData.append("course_id", course_id);
@@ -305,7 +306,26 @@ function showChildGridRegistro(parentRowID, parentRowKey) {
           });
 }
 
-
+function imageUp() {
+        var formData = new FormData();
+        var request = new XMLHttpRequest();
+        formData.append("application_id", "12345");
+        var input = document.querySelector('input[type=file]');
+        if(input != null){
+            var file = input.files[0];
+            formData.append("file", file);
+        }
+        request.open("POST", '${h.url()}/ticket/save?'+info);
+        request.send(formData);
+        request.onload  = function() {
+            var response = JSON.parse(request.responseText);
+            if (response.error == "ok"){
+               alert("TODO OK");
+            }else{
+                alert("HUBO PROBLEMA");
+            }
+        };
+}
 </script>
 
 
