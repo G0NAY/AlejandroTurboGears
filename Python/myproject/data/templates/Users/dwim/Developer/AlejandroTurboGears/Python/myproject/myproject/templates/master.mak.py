@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1574356839.220772
+_modified_time = 1574808349.758198
 _enable_loop = True
 _template_filename = '/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/master.mak'
 _template_uri = '/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/master.mak'
@@ -18,8 +18,8 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        tg = context.get('tg', UNDEFINED)
         self = context.get('self', UNDEFINED)
+        tg = context.get('tg', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('<!DOCTYPE html>\n<html>\n<head>\n    ')
         __M_writer(escape(self.meta()))
@@ -33,7 +33,7 @@ def render_body(context,**pageargs):
         __M_writer(escape(tg.url('/javascript/bootstrap.min.js')))
         __M_writer('"></script>\n    ')
         __M_writer(escape(self.head_content()))
-        __M_writer('\n</head>\n<body class="')
+        __M_writer('\n\n</head>\n<body class="')
         __M_writer(escape(self.body_class()))
         __M_writer('">\n    ')
         __M_writer(escape(self.main_menu()))
@@ -123,9 +123,9 @@ def render_footer(context):
     __M_caller = context.caller_stack._push_frame()
     try:
         h = context.get('h', UNDEFINED)
-        tmpl_context = context.get('tmpl_context', UNDEFINED)
-        getattr = context.get('getattr', UNDEFINED)
         tg = context.get('tg', UNDEFINED)
+        getattr = context.get('getattr', UNDEFINED)
+        tmpl_context = context.get('tmpl_context', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n  <footer class="footer hidden-xs hidden-sm">\n    <a class="pull-right" href="http://www.turbogears.org"><img style="vertical-align:middle;" src="')
         __M_writer(escape(tg.url('/img/under_the_hood_blue.png')))
@@ -142,10 +142,10 @@ def render_footer(context):
 def render_main_menu(context):
     __M_caller = context.caller_stack._push_frame()
     try:
+        page = context.get('page', UNDEFINED)
+        tmpl_context = context.get('tmpl_context', UNDEFINED)
         request = context.get('request', UNDEFINED)
         tg = context.get('tg', UNDEFINED)
-        tmpl_context = context.get('tmpl_context', UNDEFINED)
-        page = context.get('page', UNDEFINED)
         getattr = context.get('getattr', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n  <!-- Navbar -->\n  <nav class="navbar navbar-default">\n    <div class="navbar-header">\n      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-content">\n        <span class="sr-only">Toggle navigation</span>\n        <span class="icon-bar"></span>\n        <span class="icon-bar"></span>\n        <span class="icon-bar"></span>\n      </button>\n      <a class="navbar-brand" href="')
@@ -244,6 +244,6 @@ def render_main_menu(context):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/master.mak", "uri": "/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/master.mak", "source_encoding": "utf-8", "line_map": {"17": 0, "24": 1, "25": 4, "26": 4, "27": 5, "28": 5, "29": 6, "30": 6, "31": 7, "32": 7, "33": 10, "34": 10, "35": 11, "36": 11, "37": 13, "38": 13, "39": 14, "40": 14, "41": 16, "42": 16, "43": 18, "44": 18, "45": 34, "46": 36, "47": 40, "48": 41, "49": 43, "50": 50, "51": 101, "57": 22, "63": 22, "64": 23, "65": 24, "66": 25, "67": 26, "68": 25, "69": 26, "70": 27, "71": 29, "72": 29, "73": 33, "74": 33, "75": 33, "81": 36, "90": 37, "95": 37, "96": 38, "97": 38, "103": 41, "112": 43, "116": 43, "122": 45, "130": 45, "131": 47, "132": 47, "133": 48, "134": 48, "135": 48, "136": 48, "142": 52, "151": 52, "152": 62, "153": 62, "154": 63, "155": 63, "156": 64, "157": 64, "158": 70, "159": 70, "160": 70, "161": 70, "162": 71, "163": 71, "164": 71, "165": 71, "166": 72, "167": 72, "168": 72, "169": 72, "170": 73, "171": 73, "172": 73, "173": 73, "174": 74, "175": 74, "176": 74, "177": 74, "178": 75, "179": 75, "180": 75, "181": 75, "182": 76, "183": 76, "184": 76, "185": 76, "186": 77, "187": 77, "188": 77, "189": 77, "190": 78, "191": 78, "192": 78, "193": 78, "194": 79, "195": 79, "196": 79, "197": 79, "198": 80, "199": 80, "200": 80, "201": 80, "202": 81, "203": 81, "204": 81, "205": 81, "206": 82, "207": 82, "208": 82, "209": 82, "210": 83, "211": 83, "212": 83, "213": 83, "214": 84, "215": 84, "216": 84, "217": 84, "218": 85, "219": 85, "220": 85, "221": 85, "222": 86, "223": 86, "224": 86, "225": 86, "226": 89, "227": 90, "228": 91, "229": 92, "230": 92, "231": 92, "232": 93, "233": 94, "234": 94, "235": 94, "236": 95, "237": 95, "238": 97, "239": 99, "245": 239}}
+{"filename": "/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/master.mak", "uri": "/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/master.mak", "source_encoding": "utf-8", "line_map": {"17": 0, "24": 1, "25": 4, "26": 4, "27": 5, "28": 5, "29": 6, "30": 6, "31": 7, "32": 7, "33": 10, "34": 10, "35": 11, "36": 11, "37": 14, "38": 14, "39": 15, "40": 15, "41": 17, "42": 17, "43": 19, "44": 19, "45": 35, "46": 37, "47": 41, "48": 42, "49": 44, "50": 51, "51": 102, "57": 23, "63": 23, "64": 24, "65": 25, "66": 26, "67": 27, "68": 26, "69": 27, "70": 28, "71": 30, "72": 30, "73": 34, "74": 34, "75": 34, "81": 37, "90": 38, "95": 38, "96": 39, "97": 39, "103": 42, "112": 44, "116": 44, "122": 46, "130": 46, "131": 48, "132": 48, "133": 49, "134": 49, "135": 49, "136": 49, "142": 53, "151": 53, "152": 63, "153": 63, "154": 64, "155": 64, "156": 65, "157": 65, "158": 71, "159": 71, "160": 71, "161": 71, "162": 72, "163": 72, "164": 72, "165": 72, "166": 73, "167": 73, "168": 73, "169": 73, "170": 74, "171": 74, "172": 74, "173": 74, "174": 75, "175": 75, "176": 75, "177": 75, "178": 76, "179": 76, "180": 76, "181": 76, "182": 77, "183": 77, "184": 77, "185": 77, "186": 78, "187": 78, "188": 78, "189": 78, "190": 79, "191": 79, "192": 79, "193": 79, "194": 80, "195": 80, "196": 80, "197": 80, "198": 81, "199": 81, "200": 81, "201": 81, "202": 82, "203": 82, "204": 82, "205": 82, "206": 83, "207": 83, "208": 83, "209": 83, "210": 84, "211": 84, "212": 84, "213": 84, "214": 85, "215": 85, "216": 85, "217": 85, "218": 86, "219": 86, "220": 86, "221": 86, "222": 87, "223": 87, "224": 87, "225": 87, "226": 90, "227": 91, "228": 92, "229": 93, "230": 93, "231": 93, "232": 94, "233": 95, "234": 95, "235": 95, "236": 96, "237": 96, "238": 98, "239": 100, "245": 239}}
 __M_END_METADATA
 """

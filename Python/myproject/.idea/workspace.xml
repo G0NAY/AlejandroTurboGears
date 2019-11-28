@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3ab7d527-4f0b-4a56-9db8-1c24efc0d03c" name="Default Changelist" comment="linea &lt;br&gt; agrgada">
+    <list default="true" id="3ab7d527-4f0b-4a56-9db8-1c24efc0d03c" name="Default Changelist" comment="Actualizacion de tablas, se agrega campo longblob">
+      <change afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/makoconnection/connection.mak.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../python.jupiter/production.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/courses/courses.mak.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/courses/courses.mak.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/libreria/displaybooks.mak.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/libreria/displaybooks.mak.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/libreria/hello.mak.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/libreria/hello.mak.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/libreria/libreria.mak.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/libreria/libreria.mak.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/controllers/courses/courses.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/controllers/courses/courses.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/controllers/root.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/controllers/root.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/templates/courses/courses.mak" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/templates/courses/courses.mak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/templates/libreria/displaybooks.mak" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/templates/libreria/displaybooks.mak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/templates/libreria/hello.mak" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/templates/libreria/hello.mak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/templates/libreria/libreria.mak" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/templates/libreria/libreria.mak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/master.mak.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/templates/Users/dwim/Developer/AlejandroTurboGears/Python/myproject/myproject/templates/master.mak.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +36,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -123,8 +122,33 @@
       <workItem from="1574285274602" duration="7223000" />
       <workItem from="1574350868948" duration="15644000" />
       <workItem from="1574436722615" duration="14302000" />
-      <workItem from="1574694663823" duration="15212000" />
+      <workItem from="1574694663823" duration="18598000" />
+      <workItem from="1574781635099" duration="19511000" />
+      <workItem from="1574867710333" duration="17367000" />
+      <workItem from="1574954345404" duration="1756000" />
     </task>
+    <task id="LOCAL-00001" summary="Actualizacion de tablas, se agrega campo longblob">
+      <created>1574726125443</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574726125443</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Edicion de Libreria se agrega opcion de imagen, Se corrige error al cargar datos de Usuario">
+      <created>1574877899378</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1574877899378</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Creacion de edicion de datos en Usuarios">
+      <created>1574899269608</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574899269608</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +166,12 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Actualizacion de tablas, se agrega campo longblob" />
+    <MESSAGE value="Edicion de Libreria se agrega opcion de imagen, Se corrige error al cargar datos de Usuario" />
+    <MESSAGE value="Creacion de edicion de datos en Usuarios" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creacion de edicion de datos en Usuarios" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/myproject$root.coverage" NAME="root Coverage Results" MODIFIED="1572628472346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/myproject/controllers" />
