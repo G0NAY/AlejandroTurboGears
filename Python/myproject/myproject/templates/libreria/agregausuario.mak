@@ -9,7 +9,7 @@
 <head></head>
 <body>
 <form id="addUsuasrio">
-    <input hidden type="text" id="ticket_id" value='${usuario_id}'>
+    <input hidden type="text" id="user_id" value='${usuario_id}'>
     <fieldset>
         <table style="width:100%">
             <tr>
@@ -17,7 +17,7 @@
                     ${_('Nombre')}:
                 </td>
                 <td>
-                    <input type="text" maxlength="40" id="user_name" style="width: 40%" value='${usuario_id}'>
+                    <input type="text" maxlength="40" id="user_name" style="width: 40%" value='${handler.name}'>
                 </td>
             </tr>
 
@@ -28,7 +28,7 @@
                 </td>
                 <td>
                     <br>
-                    <input type="text" maxlength="40" id="user_edad" style="width: 40%" value='${usuario_id}'>
+                    <input type="text" maxlength="40" id="user_edad" style="width: 40%" value='${handler.age}'>
                 </td>
             </tr>
 
@@ -39,7 +39,7 @@
                 </td>
                 <td>
                     <br>
-                    <input type="text" maxlength="40" id="user_tel" style="width: 40%" value='${usuario_id}'>
+                    <input type="text" maxlength="40" id="user_tel" style="width: 40%" value='${handler.phone}'>
                 </td>
             </tr>
 
@@ -50,7 +50,7 @@
                 </td>
                 <td>
                     <br>
-                    <input type="text" maxlength="40" id="user_email" style="width: 40%" value='${usuario_id}'>
+                    <input type="text" maxlength="40" id="user_email" style="width: 40%" value='${handler.email_address}'>
                 </td>
             </tr>
 
@@ -62,7 +62,7 @@
                     ${_('Imagen')}:
                 </td>
                 <td>
-                    <input type="file" value='${usuario_id}'>
+                    <input type="file" value='${handler.image}'>
                 </td>
             </tr>
         </table>

@@ -62,57 +62,64 @@ class LibreriaController(BaseController):
 
     @expose('json')
     def addUsuario(self, **kw):
-
         print(kw)
-
-        if kw["usuario_id"] == 0:
+        if kw["usuario_id"] == "0":
             kw['handler'] = Usuario()
+            print(kw)
         else:
             kw['handler'] = DBSession.query(Usuario).filter_by(usuario_id=kw['usuario_id']).first()
-        dialogagrega = render_template({"list": list}, "mako", 'myproject.templates.libreria.agregausuario')
-        print(dialogagrega)
+            print(kw)
+        dialogagrega = render_template(kw, "mako", 'myproject.templates.libreria.agregausuario')
+        print(kw)
         return dict(dialogagrega=dialogagrega)
 
     @expose('json')
     def saveFile(self, **kw):
         print(kw)
-        name=kw["name"]
+        name = kw["name"]
         age = kw["age"]
         phone = kw["phone"]
         email_address = kw["email_address"]
 
-        if kw["image"] == "undefined":
-            return dict(error="Archivo obligatorio")
         if name == "" or age == "" or phone == "" or email_address == "":
             return dict(error="Campos obligatorios")
 
-        image = kw["image"]
-        if image.file:
-            fileName = image.filename
-            if fileName.find(".png") > 0 or fileName.find(".jpeg") > 0 or fileName.find(".jpg") > 0 or fileName.find(
-                    ".doc") > 0 or fileName.find(".PDF") > 0 or fileName.find(".pdf") > 0:
-                ftyoe = ""
-                if fileName.find(".png") > 0 or fileName.find(".jpeg") > 0 or fileName.find(".jpg") > 0:
-                    ftyoe = "image"
-                if fileName.find(".doc") > 0:
-                    ftyoe = "doc"
-                if fileName.find(".pdf") > 0:
-                    ftyoe = "pdf"
-                if fileName.find(".PDF") > 0:
-                    ftyoe = "pdf"
+        if kw["usuario_id"] == "0":
+            if kw["image"] == "undefined":
+                return dict(error="Archivo obligatorio")
+            handler = Usuario()
+            i=0
+        else:
+            handler = DBSession.query(Usuario).filter_by(usuario_id=kw['usuario_id']).first()
+            i = 1
 
-                newUser = Usuario()
-                newUser.name = name
-                newUser.age = age
-                newUser.phone = phone
-                newUser.email_address = email_address
-                newUser.image = image.file.read()
+        if kw["image"] != "undefined":
+            image = kw["image"]
+            if image.file:
+                fileName = image.filename
+                if fileName.find(".png") > 0 or fileName.find(".jpeg") > 0 or fileName.find(".jpg") > 0 or fileName.find(".doc") > 0 or fileName.find(".PDF") > 0 or fileName.find(".pdf") > 0:
+                    ftyoe = ""
+                    if fileName.find(".png") > 0 or fileName.find(".jpeg") > 0 or fileName.find(".jpg") > 0:
+                        ftyoe = "image"
+                    if fileName.find(".doc") > 0:
+                        ftyoe = "doc"
+                    if fileName.find(".pdf") > 0:
+                        ftyoe = "pdf"
+                    if fileName.find(".PDF") > 0:
+                        ftyoe = "pdf"
+                    handler.image = image.file.read()
+                else:
+                    return dict(error="Archivo obligatorio de tipo PNG, JPEG, DOC, PDF")
 
-                DBSession.add(newUser)
-                DBSession.flush()
-            else:
-                return dict(error="Archivo obligatorio de tipo PNG, JPEG, DOC, PDF")
-        return dict(error="ok")
+        handler.name = name
+        handler.age = age
+        handler.phone = phone
+        handler.email_address = email_address
+
+        if i == 0:
+            DBSession.add(handler)
+        DBSession.flush()
+        return dict(error="ok", usuario_id=handler.usuario_id)
 
     @expose('json')
     def updateAuthor(self, **kw):
@@ -195,3 +202,16 @@ class LibreriaController(BaseController):
         else:
             error = "Ya tiene 3 libros asignados. No puede sacar más libros"
         return dict(book=book)
+
+    @expose('json')
+    def DeletePrestamo(self, **kw):
+        print(kw)
+        usuario_id = kw["usuario_id"]
+        book_id = kw["book_id"]
+        print(usuario_id)
+        print(book_id)
+        current_usuario = DBSession.query(Usuario).filter_by(usuario_id=usuario_id).first()
+        current_book = DBSession.query(Book).filter_by(book_id=book_id).first()
+        current_usuario.books.remove(current_book)
+        DBSession.flush()
+        return dict()

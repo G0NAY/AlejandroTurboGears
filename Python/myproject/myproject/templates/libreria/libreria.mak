@@ -24,6 +24,54 @@
     </table>
 
  <script type="text/javascript">
+
+     function EliminaFila(rowId) {
+         var selRowId = jQuery('#jqGrid').jqGrid('getGridParam', 'selrow');
+         var rowData = jQuery("#jqGrid").getRowData(selRowId);
+         var usuario_id = rowData['usuario_id'];
+         var book_id = rowData['book_id'];
+
+
+         if (!selRowId) {
+             alert("Seleccione una fila")
+         } else {
+             $('#dialogForm01').html("¿Deseas eliminar este registro?");
+             var winHeight = Math.round(window.innerHeight * .345)
+             var winWidth = Math.round(window.innerWidth * .445)
+             var ContDialog = $("#dialogForm01").dialog({
+                 autoOpen: false,
+                 height: winHeight - 100,
+                 width: winWidth - 300,
+                 modal: true,
+                 title: "${_('Eliminar')}",
+                 dialogClass: "noclose",
+                 closeOnEscape: false,
+                 buttons: {
+                     "${_('Si')}": function () {
+                         $('#dialogForm01').html("");
+
+                         <!-- Aquí inicia la funcion para enviar los datos del row al EndPoint-->
+                         var formData = new FormData();
+                         formData.append("usuario_id", usuario_id);
+                         formData.append("book_id", book_id);
+                         var request = new XMLHttpRequest();
+                         request.open("POST", '${h.url()}/libreria/DeletePrestamo');
+                         request.send(formData);
+                         $('#jqGrid').trigger('reloadGrid');
+
+                         ContDialog.dialog("close");
+                     },
+                     "${_('No')}": function () {
+                         $('#dialogForm01').html("");
+                         ContDialog.dialog("close");
+                     }
+                 },
+                 close: function () {
+                 }
+             });
+             ContDialog.dialog("open");
+         }
+     }
         $(document).ready(
             function () {
 
@@ -51,14 +99,22 @@
                     onClickButton: function(){
                         displayPrestamo();
                     }
+                })
+            jQuery("#jqGrid").navButtonAdd('#jqGridPager',
+                {
+                    buttonicon: " ui-icon-trash",
+                    title: "Eliminar",
+                    caption: " ",
+                    position: "last",
+                    onClickButton: function(rowId){
+                        EliminaFila(rowId);
+                    }
                 });
         });
 
 function alertaPrestamo() {
 
-                var libro = $('#libros').val();
                 var libro_id = $('#libros_id').val();
-                var usuario = $('#usuarios').val();
                 var usuario_id = $('#usuarios_id').val();
 
                 if (!libro_id || !usuario_id){
@@ -164,7 +220,7 @@ function  displayPrestamo() {
                             closeOnEscape: false,
                             buttons: {
                                 "${_('Agregar')}": function() {
-
+                                    var usuario_id = $('#user_id').val();
                                     var name = $('#user_name').val();
                                     var age = $('#user_edad').val();
                                     var phone = $('#user_tel').val();
@@ -174,11 +230,12 @@ function  displayPrestamo() {
                                     file = input.files[0];
 
                                     var formData = new FormData();
-                                    formData.append("image", file);
+                                    formData.append("usuario_id", usuario_id);
                                     formData.append("name", name);
                                     formData.append("age", age);
                                     formData.append("phone", phone);
                                     formData.append("email_address", email_address);
+                                    formData.append("image", file);
 
                                     var request = new XMLHttpRequest();
                                     request.open("POST", '${h.url()}/libreria/saveFile');

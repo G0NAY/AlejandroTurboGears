@@ -12,7 +12,7 @@
 
         <tr>
             <td colspan="2">
-                <img src="data:image/png;base64,${image}" width="150" height="100" />
+                <img src="data:image/png;base64,${image}" width="140" height="100" />
             </td>
         </tr>
 		<tr>
